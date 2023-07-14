@@ -2,7 +2,7 @@ import { AnalyticsBrowser } from '@segment/analytics-next';
 import { defineNuxtPlugin, nextTick } from '#imports';
 import { ModuleOptions } from '../module';
 import { useRouter } from 'nuxt/app';
-import { ErrorTypes, NavigationFailure, RouteLocationNormalized, Router } from 'vue-router';
+import { NavigationFailureType, NavigationFailure, RouteLocationNormalized, Router } from 'vue-router';
 import { useSegment } from './composables/useSegment';
 
 let segment: AnalyticsBrowser;
@@ -54,9 +54,9 @@ function initVueRouterTracking(router: Router, ignoredViews: ModuleOptions['igno
   function isNavigationFailure(
     failure: void | NavigationFailure | undefined,
     navigationFailureType:
-      | ErrorTypes.NAVIGATION_ABORTED
-      | ErrorTypes.NAVIGATION_CANCELLED
-      | ErrorTypes.NAVIGATION_DUPLICATED,
+      | NavigationFailureType.aborted
+      | NavigationFailureType.cancelled
+      | NavigationFailureType.duplicated,
   ): boolean {
     if (!(failure instanceof Error)) {
       return false;
@@ -102,11 +102,11 @@ function initVueRouterTracking(router: Router, ignoredViews: ModuleOptions['igno
     const name: string = trackNameFromRoute(to);
 
 
-    if (isNavigationFailure(failure, ErrorTypes.NAVIGATION_ABORTED)) {
+    if (isNavigationFailure(failure, NavigationFailureType.aborted)) {
       if (debugEnabled) {
         console.log(`[Segment]: '${name}' not tracked due to navigation aborted`);
       }
-    } else if (isNavigationFailure(failure, ErrorTypes.NAVIGATION_CANCELLED)) {
+    } else if (isNavigationFailure(failure, NavigationFailureType.cancelled)) {
       if (debugEnabled) {
         console.log(`[Segment]: '${name}' not tracked due to navigation cancelled`);
       }
