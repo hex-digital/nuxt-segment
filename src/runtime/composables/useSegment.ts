@@ -76,6 +76,7 @@ export function useSegment(segment?: AnalyticsBrowser) {
   return {
     $segment,
     identify,
+    alias,
     page,
     screen,
     group,
