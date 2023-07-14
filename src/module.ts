@@ -43,7 +43,7 @@ export interface ModuleOptions {
   /**
    * Whether or not call `trackView` in `Vue.nextTick`
    */
-  trackOnNextTick: boolean
+  trackOnNextTick?: boolean
 
   /**
    * Settings for Segment
