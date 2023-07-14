@@ -1,7 +1,7 @@
 {
   "name": "@hexdigital/nuxt-segment",
   "type": "module",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "packageManager": "pnpm@8.6.5",
   "description": "Nuxt 3 module for Segment",
   "author": "Jamie Warburton <jamie@hexdigital.com>",

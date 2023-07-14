@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v1.3.2
+
+[compare changes](https://github.com/hex-digital/nuxt-segment/compare/v1.3.1...v1.3.2)
+
+### 🩹 Fixes
+
+- Fix function name in logs ([d210e75](https://github.com/hex-digital/nuxt-segment/commit/d210e75))
+
+### 📖 Documentation
+
+- Add docs for reset ([7a43c82](https://github.com/hex-digital/nuxt-segment/commit/7a43c82))
+
+### ❤️  Contributors
+
+- Jamie Warburton ([@Jamiewarb](http://github.com/Jamiewarb))
+
 ## v1.3.1
 
 [compare changes](https://github.com/hex-digital/nuxt-segment/compare/v1.3.0...v1.3.1)
