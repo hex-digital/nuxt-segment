@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   segment: {
     debugEnabled: true,
     settings: {
-      writeKey: '',
+      writeKey: 'ObMCL6UtA5YhaHqVh2dOV37ieOETaOSD',
     }
   },
   devtools: { enabled: true }

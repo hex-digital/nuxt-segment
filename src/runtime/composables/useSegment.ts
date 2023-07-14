@@ -11,67 +11,65 @@ export function useSegment(segment?: AnalyticsBrowser) {
     return process.client && (process.env.NODE_ENV !== 'development' || config.trackDevMode);
   }
 
+  // See: https://segment.com/docs/connections/spec/identify/
   function identify(...args: Parameters<AnalyticsBrowser['identify']>) {
-    if (config.debugEnabled) {
-      console.log(`[${logPrefix}@identify]`, ...args);
-    }
-    if (shouldTrack()) {
-      return $segment.identify(...args);
-    }
+    wrapFn($segment.identify)(...args);
   }
 
+  // See: https://segment.com/docs/connections/spec/alias/
+  function alias(...args: Parameters<AnalyticsBrowser['alias']>) {
+    wrapFn($segment.alias)(...args);
+  }
+
+  // See: https://segment.com/docs/connections/spec/page/
   function page(...args: Parameters<AnalyticsBrowser['page']>) {
-    if (config.debugEnabled) {
-      console.log(`[${logPrefix}@page]`, ...args);
-    }
-    if (shouldTrack()) {
-      return $segment.page(...args);
-    }
+    wrapFn($segment.page)(...args);
   }
 
+  // See: https://segment.com/docs/connections/spec/screen/
+  function screen(...args: Parameters<AnalyticsBrowser['screen']>) {
+    wrapFn($segment.screen)(...args);
+  }
+
+  // See: https://segment.com/docs/connections/spec/group/
+  function group(...args: Parameters<AnalyticsBrowser['group']>) {
+    wrapFn($segment.group)(...args);
+  }
+
+  // See: https://segment.com/docs/connections/spec/track/
   function track(...args: Parameters<AnalyticsBrowser['track']>) {
-    if (shouldTrack()) {
-      if (config.debugEnabled) {
-        console.log(`[${logPrefix}@track]`, ...args);
-      }
-      return $segment.track(...args);
-    }
+    wrapFn($segment.track)(...args);
   }
 
   function trackSubmit(...args: Parameters<AnalyticsBrowser['trackSubmit']>) {
-    if (shouldTrack()) {
-      if (config.debugEnabled) {
-        console.log(`[${logPrefix}@trackSubmit]`, ...args);
-      }
-      return $segment.trackSubmit(...args);
-    }
+    wrapFn($segment.trackSubmit)(...args);
   }
 
   function trackClick(...args: Parameters<AnalyticsBrowser['trackClick']>) {
-    if (shouldTrack()) {
-      if (config.debugEnabled) {
-        console.log(`[${logPrefix}@trackClick]`, ...args);
-      }
-      return $segment.trackClick(...args);
-    }
+    wrapFn($segment.trackClick)(...args);
   }
 
   function trackLink(...args: Parameters<AnalyticsBrowser['trackLink']>) {
-    if (shouldTrack()) {
-      if (config.debugEnabled) {
-        console.log(`[${logPrefix}@trackLink]`, ...args);
-      }
-      return $segment.trackLink(...args);
-    }
+    wrapFn($segment.trackLink)(...args);
+  }
+
+  function reset(...args: Parameters<AnalyticsBrowser['reset']>) {
+    return wrapFn($segment.reset)(...args);
   }
 
   function raw(name: string, ...args: any) {
-    if (shouldTrack()) {
+    // @ts-ignore-next-line
+    return wrapFn($segment[name])(...args);
+  }
+
+  function wrapFn(fn: CallableFunction) {
+    return function analyticsFn(...args: any) {
       if (config.debugEnabled) {
         console.log(`[${logPrefix}@raw]`, ...args);
       }
-      // @ts-ignore
-      $segment[name](...args);
+      if (shouldTrack()) {
+        return fn(...args);
+      }
     }
   }
 
@@ -79,10 +77,13 @@ export function useSegment(segment?: AnalyticsBrowser) {
     $segment,
     identify,
     page,
+    screen,
+    group,
     track,
     trackSubmit,
     trackClick,
     trackLink,
+    reset,
     raw,
   };
 }
