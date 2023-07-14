@@ -1,7 +1,6 @@
 import { AnalyticsBrowser } from '@segment/analytics-next';
-import { defineNuxtPlugin, nextTick } from '#imports';
-import { ModuleOptions } from '../module';
-import { useRouter } from 'nuxt/app';
+import { useRouter, defineNuxtPlugin, nextTick } from '#imports';
+import type { ModuleOptions } from '../src/module';
 import { NavigationFailureType, NavigationFailure, RouteLocationNormalized, Router } from 'vue-router';
 import { useSegment } from './composables/useSegment';
 
