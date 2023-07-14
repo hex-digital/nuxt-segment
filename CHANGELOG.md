@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.3.1
+
+[compare changes](https://github.com/hex-digital/nuxt-segment/compare/v1.3.0...v1.3.1)
+
+### 🩹 Fixes
+
+- Add missing alias fn ([0b635bb](https://github.com/hex-digital/nuxt-segment/commit/0b635bb))
+
+### ❤️  Contributors
+
+- Jamie Warburton ([@Jamiewarb](http://github.com/Jamiewarb))
+
 ## v1.3.0
 
 [compare changes](https://github.com/hex-digital/nuxt-segment/compare/v1.2.3...v1.3.0)
