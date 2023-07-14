@@ -53,6 +53,7 @@ export function useSegment(segment?: AnalyticsBrowser) {
     wrapFn($segment.trackLink)(...args);
   }
 
+  // See: https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/#reset-or-log-out
   function reset(...args: Parameters<AnalyticsBrowser['reset']>) {
     return wrapFn($segment.reset)(...args);
   }
