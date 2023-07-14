@@ -2,7 +2,6 @@ import { defu } from 'defu'
 import { createResolver, addImportsDir, addPlugin, defineNuxtModule } from '@nuxt/kit'
 import { name, version } from '../package.json'
 import { setupDevToolsUI } from './devtools';
-import { RouteLocationNormalized } from 'vue-router';
 
 export interface ModuleOptions {
   /**
@@ -34,12 +33,12 @@ export interface ModuleOptions {
   /**
    * Ignore some router views from being tracked - used when enableRouterSync is true
    */
-  ignoredViews: string[] | ((to: RouteLocationNormalized, from: RouteLocationNormalized) => boolean)
+  ignoredViews: string[] | ((to: any, from: any) => boolean)
 
   /**
    * Derive additional event data after navigation
    */
-  vueRouterAdditionalEventData?: (to: RouteLocationNormalized, from: RouteLocationNormalized) => Record<string, any> | Promise<Record<string, any>>;
+  vueRouterAdditionalEventData?: (to: any, from?: any) => Record<string, any> | Promise<Record<string, any>>;
 
   /**
    * Whether or not call `trackView` in `Vue.nextTick`
@@ -131,8 +130,13 @@ export default defineNuxtModule<ModuleOptions>({
 
     nuxt.options.runtimeConfig.public.segment = moduleOptions
 
+    nuxt.options.vite.optimizeDeps = nuxt.options.vite.optimizeDeps ?? {};
+    nuxt.options.vite.optimizeDeps.include = nuxt.options.vite?.optimizeDeps?.include ?? [];
+    nuxt.options.vite.optimizeDeps.include.push("@segment/analytics-next");
+
     // Transpile runtime
     nuxt.options.build.transpile.push(resolver.resolve('./runtime'))
+
 
     addImportsDir(resolver.resolve('./runtime/composables'))
 

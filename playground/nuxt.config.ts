@@ -1,5 +1,10 @@
 export default defineNuxtConfig({
   modules: ['../src/module'],
-  myModule: {},
+  segment: {
+    debugEnabled: true,
+    settings: {
+      writeKey: '',
+    }
+  },
   devtools: { enabled: true }
 })

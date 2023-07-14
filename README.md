@@ -23,8 +23,8 @@ Find and replace all on all files (CMD+SHIFT+F):
 
 ## Features
 
-- 🌻 No configuration necessary
 - 📯 Track events and page views manually with [composables](#composables)
+- 📯 Optionally track page views automatically with the router integration
 - 📂 [`.env` file support](#configuration)
 - 🧺 Sensible default options
 - 🦾 SSR-ready
