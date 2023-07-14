@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.3.0
+
+[compare changes](https://github.com/hex-digital/nuxt-segment/compare/v1.2.3...v1.3.0)
+
+### 🚀 Enhancements
+
+- Add greater first party support for segment methods ([9db9fe4](https://github.com/hex-digital/nuxt-segment/commit/9db9fe4))
+
+### ❤️  Contributors
+
+- Jamie Warburton ([@Jamiewarb](http://github.com/Jamiewarb))
+
 ## v1.2.3
 
 [compare changes](https://github.com/hex-digital/nuxt-segment/compare/v1.2.2...v1.2.3)
