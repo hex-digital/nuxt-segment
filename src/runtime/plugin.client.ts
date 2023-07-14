@@ -1,5 +1,5 @@
 import { AnalyticsBrowser } from '@segment/analytics-next';
-import { useRoute, useRouter, defineNuxtPlugin, nextTick } from '#imports';
+import { useRouter, defineNuxtPlugin, nextTick } from '#imports';
 import type { ModuleOptions } from '../module';
 import { NavigationFailureType, NavigationFailure, RouteLocationNormalized } from 'vue-router';
 import { useSegment } from './composables/useSegment';
@@ -13,7 +13,7 @@ export default defineNuxtPlugin((nuxt) => {
   const config = nuxt.$config.public.segment;
 
   debugEnabled = config.debugEnabled ?? false;
-  trackOnNextTick = config.trackOnNextTick;
+  trackOnNextTick = config.trackOnNextTick ?? false;
   deriveAdditionalEventData = config.vueRouterAdditionalEventData || deriveAdditionalEventData;
 
   if (!process.client) {
