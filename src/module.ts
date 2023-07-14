@@ -7,33 +7,33 @@ export interface ModuleOptions {
   /**
    * Whether to show debug logs for the module
    */
-  debugEnabled: boolean
+  debugEnabled?: boolean
 
   /**
    * Whether events shall be tracked when running the site in development mode
    *
    * @default false
    */
-  trackDevMode: boolean
+  trackDevMode?: boolean
 
   /**
    * Whether trackPageView should be automatically integrated with the router
    *
    * @default true
    */
-  enableRouterSync: boolean
+  enableRouterSync?: boolean
 
   /**
    * Enable Nuxt Devtools integration
    *
    * @default true
    */
-  devtools: boolean
+  devtools?: boolean
 
   /**
    * Ignore some router views from being tracked - used when enableRouterSync is true
    */
-  ignoredViews: string[] | ((to: any, from: any) => boolean)
+  ignoredViews?: string[] | ((to: any, from: any) => boolean)
 
   /**
    * Derive additional event data after navigation
@@ -69,7 +69,7 @@ export interface ModuleOptions {
    *
    * @default {}
    */
-  options: {
+  options?: {
     /**
      * The API host where the events will be sent to
      *

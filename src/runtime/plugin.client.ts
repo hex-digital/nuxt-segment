@@ -12,7 +12,7 @@ let deriveAdditionalEventData: ModuleOptions['vueRouterAdditionalEventData'] = (
 export default defineNuxtPlugin((nuxt) => {
   const config = nuxt.$config.public.segment;
 
-  debugEnabled = config.debugEnabled;
+  debugEnabled = config.debugEnabled ?? false;
   trackOnNextTick = config.trackOnNextTick;
   deriveAdditionalEventData = config.vueRouterAdditionalEventData || deriveAdditionalEventData;
 
@@ -29,7 +29,7 @@ export default defineNuxtPlugin((nuxt) => {
   const options = config.options;
 
   let integrations = {};
-  if (options.apiHost || options.protocol) {
+  if (options?.apiHost || options?.protocol) {
     integrations = {
       integrations: {
         'Segment.io': {
