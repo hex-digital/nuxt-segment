@@ -13,63 +13,63 @@ export function useSegment(segment?: AnalyticsBrowser) {
 
   // See: https://segment.com/docs/connections/spec/identify/
   function identify(...args: Parameters<AnalyticsBrowser['identify']>) {
-    wrapFn($segment.identify)(...args);
+    wrapFn('identify')(...args);
   }
 
   // See: https://segment.com/docs/connections/spec/alias/
   function alias(...args: Parameters<AnalyticsBrowser['alias']>) {
-    wrapFn($segment.alias)(...args);
+    wrapFn('alias')(...args);
   }
 
   // See: https://segment.com/docs/connections/spec/page/
   function page(...args: Parameters<AnalyticsBrowser['page']>) {
-    wrapFn($segment.page)(...args);
+    wrapFn('page')(...args);
   }
 
   // See: https://segment.com/docs/connections/spec/screen/
   function screen(...args: Parameters<AnalyticsBrowser['screen']>) {
-    wrapFn($segment.screen)(...args);
+    wrapFn('screen')(...args);
   }
 
   // See: https://segment.com/docs/connections/spec/group/
   function group(...args: Parameters<AnalyticsBrowser['group']>) {
-    wrapFn($segment.group)(...args);
+    wrapFn('group')(...args);
   }
 
   // See: https://segment.com/docs/connections/spec/track/
   function track(...args: Parameters<AnalyticsBrowser['track']>) {
-    wrapFn($segment.track)(...args);
+    wrapFn('track')(...args);
   }
 
   function trackSubmit(...args: Parameters<AnalyticsBrowser['trackSubmit']>) {
-    wrapFn($segment.trackSubmit)(...args);
+    wrapFn('trackSubmit')(...args);
   }
 
   function trackClick(...args: Parameters<AnalyticsBrowser['trackClick']>) {
-    wrapFn($segment.trackClick)(...args);
+    wrapFn('trackClick')(...args);
   }
 
   function trackLink(...args: Parameters<AnalyticsBrowser['trackLink']>) {
-    wrapFn($segment.trackLink)(...args);
+    wrapFn('trackLink')(...args);
   }
 
   // See: https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/#reset-or-log-out
   function reset(...args: Parameters<AnalyticsBrowser['reset']>) {
-    return wrapFn($segment.reset)(...args);
+    return wrapFn('reset')(...args);
   }
 
   function raw(name: string, ...args: any) {
-    // @ts-ignore-next-line
-    return wrapFn($segment[name])(...args);
+    return wrapFn('raw')(...args);
   }
 
-  function wrapFn(fn: CallableFunction) {
+  function wrapFn(fnName: string) {
     return function analyticsFn(...args: any) {
       if (config.debugEnabled) {
-        console.log(`[${logPrefix}@raw]`, ...args);
+        console.log(`[${logPrefix}@${fnName}]`, ...args);
       }
       if (shouldTrack()) {
-        return fn(...args);
+        // @ts-ignore-next-line
+        return $segment[fnName](...args);
       }
     }
   }
