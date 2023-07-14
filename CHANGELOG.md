@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.2.2
+
+[compare changes](https://github.com/hex-digital/nuxt-segment/compare/v1.2.1...v1.2.2)
+
+### 🩹 Fixes
+
+- Fix for module options ([32d62a5](https://github.com/hex-digital/nuxt-segment/commit/32d62a5))
+
+### ❤️  Contributors
+
+- Jamie Warburton ([@Jamiewarb](http://github.com/Jamiewarb))
+
 ## v1.2.1
 
 [compare changes](https://github.com/hex-digital/nuxt-segment/compare/v1.2.0...v1.2.1)
