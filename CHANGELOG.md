@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.3.4
+
+[compare changes](https://github.com/hex-digital/nuxt-segment/compare/v1.3.3...v1.3.4)
+
+### 🩹 Fixes
+
+- Move logging after the segment call so it only logs if it succeeds ([a163e02](https://github.com/hex-digital/nuxt-segment/commit/a163e02))
+
+### ❤️  Contributors
+
+- Jamie Warburton ([@Jamiewarb](http://github.com/Jamiewarb))
+
 ## v1.3.3
 
 [compare changes](https://github.com/hex-digital/nuxt-segment/compare/v1.3.2...v1.3.3)
