@@ -136,6 +136,7 @@ export default defineNuxtModule<ModuleOptions>({
 
     // Transpile runtime
     nuxt.options.build.transpile.push(resolver.resolve('./runtime'))
+    nuxt.options.build.transpile.push('@segment/analytics-next');
 
 
     addImportsDir(resolver.resolve('./runtime/composables'))
