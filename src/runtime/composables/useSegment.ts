@@ -8,7 +8,7 @@ export function useSegment(segment?: AnalyticsBrowser) {
   const logPrefix = shouldTrack() ? 'segment' : 'segment-mock';
 
   function shouldTrack() {
-    return process.client && (process.env.NODE_ENV !== 'development' || config.trackDevMode);
+    return process.client && config.settings?.writeKey && (process.env.NODE_ENV !== 'development' || config.trackDevMode);
   }
 
   // See: https://segment.com/docs/connections/spec/identify/
