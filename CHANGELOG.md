@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.3.5
+
+[compare changes](https://github.com/hex-digital/nuxt-segment/compare/v1.3.4...v1.3.5)
+
+### 🩹 Fixes
+
+- Dont attempt to track if no settings.writeKey provided ([723f94d](https://github.com/hex-digital/nuxt-segment/commit/723f94d))
+
+### ❤️  Contributors
+
+- Jamie Warburton ([@Jamiewarb](http://github.com/Jamiewarb))
+
 ## v1.3.4
 
 [compare changes](https://github.com/hex-digital/nuxt-segment/compare/v1.3.3...v1.3.4)
