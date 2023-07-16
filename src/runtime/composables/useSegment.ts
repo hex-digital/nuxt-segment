@@ -64,12 +64,12 @@ export function useSegment(segment?: AnalyticsBrowser) {
 
   function wrapFn(fnName: string) {
     return function analyticsFn(...args: any) {
-      if (config.debugEnabled) {
-        console.log(`[${logPrefix}@${fnName}]`, ...args);
-      }
       if (shouldTrack()) {
         // @ts-ignore-next-line
         return $segment[fnName](...args);
+      }
+      if (config.debugEnabled) {
+        console.log(`[${logPrefix}@${fnName}]`, ...args);
       }
     }
   }
