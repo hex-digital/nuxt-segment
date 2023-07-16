@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v1.3.3
+
+[compare changes](https://github.com/hex-digital/nuxt-segment/compare/v1.3.2...v1.3.3)
+
+### 🩹 Fixes
+
+- Fix identify not being available ([7571459](https://github.com/hex-digital/nuxt-segment/commit/7571459))
+
+### ❤️  Contributors
+
+- Jamie Warburton ([@Jamiewarb](http://github.com/Jamiewarb))
+
 ## v1.3.2
 
 [compare changes](https://github.com/hex-digital/nuxt-segment/compare/v1.3.1...v1.3.2)
